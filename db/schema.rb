@@ -11,20 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130426222246) do
+ActiveRecord::Schema.define(:version => 20130427204715) do
 
-  create_table "image_previews", :force => true do |t|
+  create_table "images", :force => true do |t|
     t.string   "title"
     t.integer  "user_id"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
     t.string   "source_file_name"
     t.string   "source_content_type"
     t.integer  "source_file_size"
     t.datetime "source_updated_at"
+    t.string   "preview_file_name"
+    t.string   "preview_content_type"
+    t.integer  "preview_file_size"
+    t.datetime "preview_updated_at"
   end
 
-  add_index "image_previews", ["user_id"], :name => "index_image_previews_on_user_id"
+  add_index "images", ["user_id"], :name => "index_image_previews_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
