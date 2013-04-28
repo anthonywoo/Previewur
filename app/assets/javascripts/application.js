@@ -13,3 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+//TODO MOVE THIS
+$(function(){
+  $("#launchmodal").on("click", function(){
+    $("#messages").html("");
+  })
+})

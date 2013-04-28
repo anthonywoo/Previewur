@@ -1,0 +1,7 @@
+<%- if @image.errors.any? %>
+  console.log('Error');
+  $('form').html('<%= escape_javascript(render('form')) %>');
+<%- else %>
+  console.log('Created');
+  $('form').html('<%= escape_javascript(render('form')) %>');
+<%- end %>
