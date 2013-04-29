@@ -1,7 +1,11 @@
 class Image < ActiveRecord::Base
+  attr_accessible :title, :source, :preview, :tag_ids
+
   belongs_to :user
   has_many :comments, :order => 'created_at DESC'
-  attr_accessible :title, :source, :preview
+  has_many :image_tags
+  has_many :tags, :through => :image_tags
+
   has_attached_file :source, :url  => "/system/images/:id/:filename",
      :path => ":rails_root/public/system/images/:id/:filename"
 
@@ -23,6 +27,16 @@ class Image < ActiveRecord::Base
   def update_file_name_attributes
     self.anim_gif_file_name = "animated.gif"
     self.preview_file_name = "preview.gif"
+  end
+
+  def set_tags=(tags)
+    availableTags = Tag.where({:name => tags})
+    all_tags = availableTags
+    to_be_created_tags = tags - availableTags.map(&:name)
+    to_be_created_tags.each do |tag_name|
+      all_tags << Tag.create(name: tag_name)
+    end
+    self.tags = all_tags
   end
 
   def to_param

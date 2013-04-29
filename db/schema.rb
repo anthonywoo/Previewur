@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130429161058) do
+ActiveRecord::Schema.define(:version => 20130429163358) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(:version => 20130429161058) do
 
   add_index "comments", ["image_id"], :name => "index_comments_on_image_id"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
+  create_table "image_tags", :force => true do |t|
+    t.integer  "image_id"
+    t.integer  "tag_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "image_tags", ["image_id"], :name => "index_image_tags_on_image_id"
+  add_index "image_tags", ["tag_id"], :name => "index_image_tags_on_tag_id"
 
   create_table "images", :force => true do |t|
     t.string   "title"
@@ -46,6 +56,12 @@ ActiveRecord::Schema.define(:version => 20130429161058) do
 
   add_index "images", ["slug"], :name => "index_images_on_slug"
   add_index "images", ["user_id"], :name => "index_image_previews_on_user_id"
+
+  create_table "tags", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

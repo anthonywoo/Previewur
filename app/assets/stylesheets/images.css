@@ -37,11 +37,30 @@ input#comment_submit {
   -moz-border-radius: 5px;
   border-radius: 5px;
   border: 2px solid #32373c;
+  padding-top: 2px;
   padding-left: 6px;
   margin-left: 10px;
   margin-right: 10px;
 }
 
 .time-display {
-  font-size: 75%;
+  font-size: 70%;
+}
+
+.tag-label {
+  margin-right: 4px;
+}
+
+.tag-area {
+  margin-left: 10px;
+  margin-right: 7px;
+}
+
+.image-input {
+  width: 350px;
+}
+
+.modal-body {
+  margin-left:auto;
+  margin-right:auto;
 }

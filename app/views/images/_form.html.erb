@@ -15,9 +15,17 @@
 
     <%= f.label :title, "Title:" %>
 
-    <%= f.text_field :title %>
+    <%= f.text_field :title, :class=>"image-input"%>
     <%= f.label :source, "Video Upload:" %>
-    <%= f.file_field :source %>
+    <%= f.file_field :source, :title => "Select a File" %>
+    <br>
+    <br>
+    <%#= f.text_field :tags, :placeholder => "Tags", :id => "tag-input", :value => ""%>
+    <div id="tag-area">
+      <input type="text" placeholder="Tags" class="tag-input image-input">
+      <div id="tags">Tags: 
+      </div>
+    <div>
     <br>
   </div>
   <%= f.submit :class=>"primary btn" %>

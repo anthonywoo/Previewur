@@ -1,0 +1,7 @@
+<div>
+  <div class="tag-area"><strong>Tags:</strong>
+    <% @image.tags.each do |tag| %>
+      <span class="label label-info tag-label"><%= tag.name%></span>
+    <% end %>
+  </div>
+</div>

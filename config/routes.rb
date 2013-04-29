@@ -1,7 +1,8 @@
 VideoPreviewer::Application.routes.draw do
   devise_for :users
+  resources :images, :except => ["show"]
   match "/images/:slug" => "images#show"
-  resources :images
+  #resources :images, :except => ["show"]
   resources :comments
   # The priority is based upon order of creation:
   # first created -> highest priority.
