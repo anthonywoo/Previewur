@@ -44,3 +44,13 @@ $(function(){
   });
 
 })
+
+$(function(){
+  $(".image").on("mouseover", function() {
+    $(this).removeClass("grey-border").addClass("yellow-border")
+  })
+
+  $(".image").on("mouseout", function(){
+    $(this).removeClass("yellow-border").addClass("grey-border")
+  })
+})

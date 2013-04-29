@@ -11,8 +11,8 @@
     <h4>Related Images:</h4>
     <div>
       <% @related_images_by_tag.each do |image| %>
-        <div class="image">
-          <%= link_to image_tag(image.preview.url, :size => "84x84"), image_url(image) %>
+        <div class="image grey-border">
+          <%= link_to image_tag(image.preview.url, :size => "81x81"), image_url(image) %>
         </div>
       <% end %>
     </div>

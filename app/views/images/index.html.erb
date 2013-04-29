@@ -1,9 +1,9 @@
 <div class="row-fluid">
   <div class="span9 left-panel">
     <% @images.each do |image| %>
-      <div class="image" >
+      <div class="image grey-border" >
         <% if image.preview_file_name %>
-        <%= link_to image_tag(image.preview.url, :size => "166x166"), image_url(image) %>
+        <%= link_to image_tag(image.preview.url, :size => "162x162"), image_url(image) %>
         <% end %> 
       </div>
     <% end %>

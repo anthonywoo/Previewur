@@ -1,7 +1,8 @@
 div.left-panel {
 
   background-color: #32373c;
-  margin-right: 10px;
+  margin-right: 7px;
+  padding-left: 2px;
   -moz-border-radius: 5px;
   border-radius: 5px;
   /*border-left: 5px solid #32373c;*/
@@ -10,14 +11,22 @@ div.left-panel {
 }
 
 .row-fluid .right-panel{
-  padding-left: 3px;
+  padding-left: 2px;
   background-color: #32373c;
-  margin-right: 10px;
+  /*margin-right: 10px;*/
   -moz-border-radius: 5px;
   border-radius: 5px;
   /*border-left: 5px solid #32373c;*/
   border: 5px solid #32373c;
   width: 21%;
+}
+
+.yellow-border {
+  border:2px solid #DAA520;
+}
+
+.grey-border {
+  border:2px solid #32373c
 }
 
 .image {

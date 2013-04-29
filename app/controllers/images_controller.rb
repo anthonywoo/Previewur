@@ -12,18 +12,16 @@ class ImagesController < ApplicationController
   def show
     @image = Image.find_by_slug(params[:slug])
     @comment = Comment.new
-    @related_images_by_tag = @image.fetch_related_images(4)
+    @related_images_by_tag = @image.fetch_related_images(10)
   end
 
   def create
     @image = Image.new(params[:image])
     @image.set_tags = params[:tag_names] if params[:tag_names]
-    # @image.update_file_name_attributes if @image.source.path #TODO FIX!
     respond_to do |format|
       if @image.save
         format.html { redirect_to images_url, :notice => 'Article was successfully created.' }
       else
-        format.html { render :new }
         format.js
       end
     end
