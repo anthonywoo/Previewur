@@ -6,6 +6,18 @@ div.left-panel {
   border-radius: 5px;
   /*border-left: 5px solid #32373c;*/
   border: 5px solid #32373c;
+  border-bottom: 20px solid #32373c;
+}
+
+.row-fluid .right-panel{
+  padding-left: 3px;
+  background-color: #32373c;
+  margin-right: 10px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  /*border-left: 5px solid #32373c;*/
+  border: 5px solid #32373c;
+  width: 21%;
 }
 
 .image {

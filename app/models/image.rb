@@ -24,10 +24,11 @@ class Image < ActiveRecord::Base
   before_validation :generate_slug
   after_commit :post_conversion_actions, :on => :create
 
-  def update_file_name_attributes
-    self.anim_gif_file_name = "animated.gif"
-    self.preview_file_name = "preview.gif"
-    self.save!
+  def fetch_related_images(count)
+    related_tags = tags.includes(:images)
+    related_images = related_tags.map(&:images).flatten.uniq
+    related_images.delete(self)
+    related_images.shuffle.first(count)
   end
 
   def set_tags=(tags)
@@ -50,6 +51,14 @@ class Image < ActiveRecord::Base
 
   def post_conversion_actions
     self.delay.generate_gif_and_preview
+  end
+
+  private
+
+  def update_file_name_attributes
+    self.anim_gif_file_name = "animated.gif"
+    self.preview_file_name = "preview.gif"
+    self.save!
   end
 
   def generate_gif_and_preview

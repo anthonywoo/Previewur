@@ -10,9 +10,9 @@ class ImagesController < ApplicationController
   end
 
   def show
-    @image = Image.includes(:comments).find_by_slug(params[:slug])
+    @image = Image.find_by_slug(params[:slug])
     @comment = Comment.new
-
+    @related_images_by_tag = @image.fetch_related_images(4)
   end
 
   def create

@@ -1,9 +1,20 @@
 <div class="row-fluid">
   <div class="span9 left-panel">
     <div class="image-display">
-      <%= image_tag @image.anim_gif.url %>
+      <%#= image_tag @image.anim_gif.url %>
     </div>
     <%= render :partial => "tags" %>
     <%= render :partial => "comments/form" %>
+  </div>
+
+  <div class="span2 right-panel centered">
+    <h4>Related Images:</h4>
+    <div>
+      <% @related_images_by_tag.each do |image| %>
+        <div class="image">
+          <%= link_to image_tag(image.preview.url, :size => "84x84"), image_url(image) %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
