@@ -31,3 +31,17 @@ input#comment_submit {
   margin-right: 7px;
   width: 570px;
 }
+
+.comment-display {
+  background-color: #272b30;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  border: 2px solid #32373c;
+  padding-left: 6px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.time-display {
+  font-size: 75%;
+}
