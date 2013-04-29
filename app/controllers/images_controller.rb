@@ -9,7 +9,7 @@ class ImagesController < ApplicationController
   end
 
   def show
-    @image = Image.includes(:comments).find(params[:id])
+    @image = Image.includes(:comments).find_by_slug(params[:slug])
     @comment = Comment.new
 
   end

@@ -1,5 +1,6 @@
 VideoPreviewer::Application.routes.draw do
   devise_for :users
+  match "/images/:slug" => "images#show"
   resources :images
   resources :comments
   # The priority is based upon order of creation:

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130429061926) do
+ActiveRecord::Schema.define(:version => 20130429161058) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
@@ -41,8 +41,10 @@ ActiveRecord::Schema.define(:version => 20130429061926) do
     t.string   "anim_gif_content_type"
     t.integer  "anim_gif_file_size"
     t.datetime "anim_gif_updated_at"
+    t.string   "slug"
   end
 
+  add_index "images", ["slug"], :name => "index_images_on_slug"
   add_index "images", ["user_id"], :name => "index_image_previews_on_user_id"
 
   create_table "users", :force => true do |t|

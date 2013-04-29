@@ -12,11 +12,12 @@ class Image < ActiveRecord::Base
      :path => ":rails_root/public/system/images/:id/:filename"
 
 
-  validates :title, :presence => true
+  validates :title, :slug, :presence => true
   validates_attachment :source, :presence => true,
   :size => { :in => 0..5.megabytes }
   #validates :source, :attachment_presence => true
   #validates_attachment_size :source, :in => 0.megabytes..5.megabytes
+  before_validation :generate_slug
   after_commit :generate_gif, :on => :create
 
   def update_file_name_attributes
@@ -24,11 +25,19 @@ class Image < ActiveRecord::Base
     self.preview_file_name = "preview.gif"
   end
 
+  def to_param
+    self.slug
+  end
+
   def source_path
     self.source.path
   end
 
   private 
+
+  def generate_slug
+    self.slug ||= SecureRandom.urlsafe_base64(4)
+  end
 
   def source_dir
     File.dirname(source_path)
