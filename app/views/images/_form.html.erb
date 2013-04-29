@@ -1,18 +1,8 @@
-
 <%= form_for @image, :html => { :multipart => true }, remote: true do |f| %>
   <div class="modal-body">
     <div id="messages">
-     <% if @image.errors.any? %>
-       <div id="error_explanation">
-         <ul>
-         <% @image.errors.full_messages.each do |msg| %>
-           <li><%= msg %></li>
-         <% end %>
-         </ul>
-       </div>
-     <% end %>
+      <%= render :partial => "messages" %>
     </div>
-
     <%= f.label :title, "Title:" %>
 
     <%= f.text_field :title, :class=>"image-input"%>
