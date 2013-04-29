@@ -9,7 +9,9 @@ class ImagesController < ApplicationController
   end
 
   def show
-    @image = Image.find(params[:id])
+    @image = Image.includes(:comments).find(params[:id])
+    @comment = Comment.new
+
   end
 
   def create

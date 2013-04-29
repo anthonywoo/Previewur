@@ -1,3 +1,9 @@
-<%= image_tag @image.source.url %>
-<br>
-<%= image_tag @image.preview.url %>
+<div class="row-fluid">
+  <div class="span9 left-panel">
+    <div class="image-display">
+      <%= image_tag @image.anim_gif.url %>
+    </div>
+
+    <%= render :partial => "comments/form" %>
+  </div>
+</div>

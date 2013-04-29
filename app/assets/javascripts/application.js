@@ -19,4 +19,8 @@ $(function(){
   $("#launchmodal").on("click", function(){
     $("#messages").html("");
   })
+
+  $("#comment_submit").on("click", function(){
+    $("#comment_submit").attr("placeholder", "");
+  })
 })

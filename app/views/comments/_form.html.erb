@@ -1,0 +1,13 @@
+<div id="comment-area">
+  <%= form_for @comment, remote: true do |f| %>
+    <%= f.text_field :body, :placeholder => "Comment", :id => "comment_submit" %>
+    <%= f.hidden_field :image_id, :value => @image.id %>
+    <%= f.submit "Submit", :class=> "btn btn-primary" %>
+  <% end %>
+
+  <% @image.comments.each do |comment| %>
+    <div>
+      <%= comment.body %>
+    </div>
+  <% end %>
+</div>

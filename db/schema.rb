@@ -11,13 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130427204715) do
+ActiveRecord::Schema.define(:version => 20130429061926) do
+
+  create_table "comments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "image_id"
+    t.string   "body"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "comments", ["image_id"], :name => "index_comments_on_image_id"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "images", :force => true do |t|
     t.string   "title"
     t.integer  "user_id"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
     t.string   "source_file_name"
     t.string   "source_content_type"
     t.integer  "source_file_size"
@@ -26,6 +37,10 @@ ActiveRecord::Schema.define(:version => 20130427204715) do
     t.string   "preview_content_type"
     t.integer  "preview_file_size"
     t.datetime "preview_updated_at"
+    t.string   "anim_gif_file_name"
+    t.string   "anim_gif_content_type"
+    t.integer  "anim_gif_file_size"
+    t.datetime "anim_gif_updated_at"
   end
 
   add_index "images", ["user_id"], :name => "index_image_previews_on_user_id"

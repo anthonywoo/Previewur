@@ -1,4 +1,4 @@
-.left-panel {
+div.left-panel {
 
   background-color: #32373c;
   margin-right: 10px;
@@ -19,3 +19,15 @@
   left: 10px;
   top: 10px;
 }*/
+
+.image-display {
+  margin-top: 10px;
+  text-align:center
+}
+
+input#comment_submit {
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 7px;
+  width: 570px;
+}

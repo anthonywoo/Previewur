@@ -1,12 +1,16 @@
 class Image < ActiveRecord::Base
   belongs_to :user
-  has_many :comments
+  has_many :comments, :order => 'created_at DESC'
   attr_accessible :title, :source, :preview
   has_attached_file :source, :url  => "/system/images/:id/:filename",
      :path => ":rails_root/public/system/images/:id/:filename"
 
+  has_attached_file :anim_gif, :url => "/system/images/:id/:filename",
+     :path => ":rails_root/public/system/images/:id/:filename"
+
   has_attached_file :preview, :url => "/system/images/:id/:filename",
      :path => ":rails_root/public/system/images/:id/:filename"
+
 
   validates :title, :presence => true
   validates_attachment :source, :presence => true,
@@ -16,7 +20,7 @@ class Image < ActiveRecord::Base
   after_commit :generate_gif, :on => :create
 
   def update_file_name_attributes
-    self.source_file_name = "source.gif"
+    self.anim_gif_file_name = "animated.gif"
     self.preview_file_name = "preview.gif"
   end
 
@@ -33,7 +37,7 @@ class Image < ActiveRecord::Base
   def generate_gif
     system("ffmpeg -i #{source_path} -t 8 -r 8 #{source_dir}/out%03d.gif")
     sleep 1
-    system("gifsicle --delay=12 --optimize=3 --loop #{source_dir}/*.gif > #{source_dir}/source.gif")
+    system("gifsicle --delay=12 --optimize=3 --loop #{source_dir}/*.gif > #{source_dir}/animated.gif")
 
 
     #path = ":/rails_root/public/system/sources/#{self.id}/#{self.source_file_name}"
