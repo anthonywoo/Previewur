@@ -25,8 +25,10 @@ class Image < ActiveRecord::Base
   after_commit :post_conversion_actions, :on => :create
 
   def update_file_name_attributes
+
     self.anim_gif_file_name = "animated.gif"
     self.preview_file_name = "preview.gif"
+
     self.save!
   end
 
@@ -49,7 +51,7 @@ class Image < ActiveRecord::Base
   end
 
   def post_conversion_actions
-    self.delay.generate_gif
+    self.delay.generate_gif #having issues if I try to call any other method!! Get Undefined Method ERror
   end
 
   def generate_slug
