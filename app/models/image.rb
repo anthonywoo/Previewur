@@ -25,10 +25,8 @@ class Image < ActiveRecord::Base
   after_commit :post_conversion_actions, :on => :create
 
   def update_file_name_attributes
-
     self.anim_gif_file_name = "animated.gif"
     self.preview_file_name = "preview.gif"
-
     self.save!
   end
 
@@ -51,7 +49,13 @@ class Image < ActiveRecord::Base
   end
 
   def post_conversion_actions
-    self.delay.generate_gif #having issues if I try to call any other method!! Get Undefined Method ERror
+    self.delay.generate_gif_and_preview
+  end
+
+  def generate_gif_and_preview
+    self.generate_gif
+    self.generate_preview
+    self.update_file_name_attributes
   end
 
   def generate_slug
@@ -66,15 +70,12 @@ class Image < ActiveRecord::Base
     system("ffmpeg -i #{source_path} -t 8 -r 8 #{source_dir}/out%03d.gif")
     sleep 1
     system("gifsicle --delay=12 --optimize=3 --loop #{source_dir}/*.gif > #{source_dir}/animated.gif")
-    generate_preview
   end
 
   def generate_preview
-    #system("convert #{source_dir}/out001.gif -trim -resize 150x150 -gravity center -background black -extent 150x150 #{source_dir}/preview.gif")
     system("convert #{source_dir}/out001.gif -resize '160x160^' -gravity center -crop 160x160+0+0 +repage #{source_dir}/preview.gif")
     target_files_to_delete = "#{source_dir}/out*.*gif"
     system("rm #{target_files_to_delete}")
-    update_file_name_attributes
   end
   
 end

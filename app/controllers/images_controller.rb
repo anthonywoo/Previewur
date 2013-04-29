@@ -16,7 +16,6 @@ class ImagesController < ApplicationController
   end
 
   def create
-    #Tag.where({:name => ["trailer", "wtf"]})
     @image = Image.new(params[:image])
     @image.set_tags = params[:tag_names] if params[:tag_names]
     # @image.update_file_name_attributes if @image.source.path #TODO FIX!
