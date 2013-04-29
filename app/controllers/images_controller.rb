@@ -16,12 +16,10 @@ class ImagesController < ApplicationController
   end
 
   def create
-    binding.pry
     #Tag.where({:name => ["trailer", "wtf"]})
     @image = Image.new(params[:image])
-    binding.pry
-    @image.set_tags = params[:tag_names]
-    @image.update_file_name_attributes if @image.source.path #TODO FIX!
+    @image.set_tags = params[:tag_names] if params[:tag_names]
+    # @image.update_file_name_attributes if @image.source.path #TODO FIX!
     respond_to do |format|
       if @image.save
         format.html { redirect_to images_url, :notice => 'Article was successfully created.' }

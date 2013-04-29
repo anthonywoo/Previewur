@@ -2,15 +2,15 @@
   <div class="span9 left-panel">
     <% @images.each do |image| %>
       <div class="image" >
+        <% if image.preview_file_name %>
         <%= link_to image_tag(image.preview.url, :size => "166x166"), image_url(image) %>
+        <% end %> 
       </div>
     <% end %>
   </div>
 
   <div class="span2">
     <a href="#myModal" role="button" class="btn" data-toggle="modal" data-target="#myModal" id="launchmodal">Create New GIF</a>
-
-
 
     <div id="myModal" class="modal hide" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-header">
@@ -20,6 +20,5 @@
       <%= render :partial => "form" %>
     </div>
   </div>
-
 
 </div>

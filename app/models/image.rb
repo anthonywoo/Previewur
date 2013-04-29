@@ -22,11 +22,12 @@ class Image < ActiveRecord::Base
   #validates :source, :attachment_presence => true
   #validates_attachment_size :source, :in => 0.megabytes..5.megabytes
   before_validation :generate_slug
-  after_commit :generate_gif, :on => :create
+  after_commit :post_conversion_actions, :on => :create
 
   def update_file_name_attributes
     self.anim_gif_file_name = "animated.gif"
     self.preview_file_name = "preview.gif"
+    self.save!
   end
 
   def set_tags=(tags)
@@ -47,7 +48,9 @@ class Image < ActiveRecord::Base
     self.source.path
   end
 
-  private 
+  def post_conversion_actions
+    self.delay.generate_gif
+  end
 
   def generate_slug
     self.slug ||= SecureRandom.urlsafe_base64(4)
@@ -61,17 +64,6 @@ class Image < ActiveRecord::Base
     system("ffmpeg -i #{source_path} -t 8 -r 8 #{source_dir}/out%03d.gif")
     sleep 1
     system("gifsicle --delay=12 --optimize=3 --loop #{source_dir}/*.gif > #{source_dir}/animated.gif")
-
-
-    #path = ":/rails_root/public/system/sources/#{self.id}/#{self.source_file_name}"
-    # binding.pry
-    # movie = FFMPEG::Movie.new(source_path)
-    # ffmpeg -i charlie.mp4 -t 8 -r 8 out%03d.gif #80 frames, 3.8mb, decent qual
-    # gifsicle --delay=12 --optimize=3 --loop *.gif > anim.gif
-    # self.source.path
-    #mpeg to create folder of pngs
-    #imagemagick to generate the gif
-    #convert out001.gif -trim -resize 150x150 -gravity center -background black -extent 150x150 test.gif
     generate_preview
   end
 
@@ -80,6 +72,7 @@ class Image < ActiveRecord::Base
     system("convert #{source_dir}/out001.gif -resize '160x160^' -gravity center -crop 160x160+0+0 +repage #{source_dir}/preview.gif")
     target_files_to_delete = "#{source_dir}/out*.*gif"
     system("rm #{target_files_to_delete}")
+    update_file_name_attributes
   end
   
 end
