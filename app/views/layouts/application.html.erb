@@ -10,11 +10,10 @@
   <div class="navbar" id="top_navbar">
     <%= render :partial => "application_wide/navbar" %>
   </div>
-
-
-
   <div class="container">
     <%= yield %>
   </div>
+
+  <%= render :partial => "application_wide/sign_in" %>
 </body>
 </html>
