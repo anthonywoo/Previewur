@@ -5,4 +5,8 @@ class ApplicationController < ActionController::Base
   def create_temp_image
     @image = Image.new
   end
+
+  def current_user
+    User.find(1)
+  end
 end

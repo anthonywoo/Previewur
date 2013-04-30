@@ -15,7 +15,7 @@ class Image < ActiveRecord::Base
   has_attached_file :preview, :url => "/system/images/:id/:filename",
      :path => ":rails_root/public/system/images/:id/:filename"
 
-
+  make_voteable
   validates :title, :slug, :presence => true
   validates_attachment :source, :presence => true,
   :size => { :in => 0..5.megabytes }

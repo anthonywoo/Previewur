@@ -10,6 +10,7 @@ gem 'sqlite3'
 gem 'devise'
 gem "paperclip"
 gem 'rmagick'
+gem 'make_voteable'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

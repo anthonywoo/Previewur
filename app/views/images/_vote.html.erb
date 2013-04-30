@@ -1,0 +1,13 @@
+<button class="vote uparrow" id="upvote">
+  UP
+</button>
+<%= @image.votes %>
+<button class="vote downarrow" id="downvote">
+  Down
+</button>
+
+<script>
+$(".vote").on("click", function() {
+  $.post("/votings", { vote_type: $(this).attr("id"), image_id: $("#comment_image_id").val() })
+})
+</script>

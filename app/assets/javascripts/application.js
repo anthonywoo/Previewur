@@ -37,12 +37,10 @@ $(function(){
       event.preventDefault();
       var tagSpan = '<span class="label label-info tag-label">'+ $(".tag-input").val() + '</span>'
       var hiddenValue = '<input type="hidden" name="tag_names[]" value="' + $(".tag-input").val() + '">'
-      // debugger
       $("#tags").append(tagSpan).append(hiddenValue)
       $(".tag-input").val("")
     }
   });
-
 })
 
 $(function(){
@@ -53,4 +51,8 @@ $(function(){
   $(".image").on("mouseout", function(){
     $(this).removeClass("yellow-border").addClass("grey-border")
   })
+
+  // $(".vote").on("click", function() {
+  //   $.post("/votings", { vote_type: $(this).attr("id"), image_id: $("#comment_image_id").val() })
+  // })
 })

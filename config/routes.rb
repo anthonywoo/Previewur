@@ -4,6 +4,7 @@ VideoPreviewer::Application.routes.draw do
   match "/images/:slug" => "images#show"
   #resources :images, :except => ["show"]
   resources :comments
+  resources :votings, :only => ["create"]
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
