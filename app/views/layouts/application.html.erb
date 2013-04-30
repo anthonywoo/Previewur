@@ -7,19 +7,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="navbar">
-    <div class="navbar-inner">
-      <div class="container">
-        <ul class="nav">
-          <li><a href="#" class="brand">TEST</a></li>
-          <li><a href="#">Random</a></li>
-        </ul>
-        <ul class="nav pull-right">
-          <li><a href="#">Sign In</a></li>
-          <li><a href="#">Register</a></li>
-        </ul>
-      </div>
-    </div>
+  <div class="navbar" id="top_navbar">
+    <%= render :partial => "application_wide/navbar" %>
   </div>
 
 

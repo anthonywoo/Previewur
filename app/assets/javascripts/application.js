@@ -46,12 +46,14 @@ $(function(){
 $(function(){
   $(".image").on("mouseover", function() {
     $(this).removeClass("grey-border").addClass("yellow-border")
-  })
+  });
 
   $(".image").on("mouseout", function(){
     $(this).removeClass("yellow-border").addClass("grey-border")
-  })
-
+  });
+  $("#sign_in_modal").on("click", function(){
+    $(".sign_in_errors").html("")
+  });
   // $(".vote").on("click", function() {
   //   $.post("/votings", { vote_type: $(this).attr("id"), image_id: $("#comment_image_id").val() })
   // })

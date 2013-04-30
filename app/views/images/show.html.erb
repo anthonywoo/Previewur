@@ -3,28 +3,41 @@
     <div class="content-area">
       <div class="image-title"><h2><%= @image.title %></h2> </div>
 
-
       <div class="image-display">
         <%= image_tag @image.anim_gif.url %>
       </div>
     </div>
+
     <div class="vote-display">
       <%= render :partial => "vote" %>
     </div>
+
     <%= render :partial => "tags" %>
+
     <div id="comment-area">
       <%= render :partial => "comments/form" %>
     </div>
   </div>
+  <% unless @related_images_by_tag.empty? %>
+    <div class="span2 right-panel">
+      <h4>Related Images:</h4>
+      <div>
+        <% @related_images_by_tag.each do |image| %>
+          <div class="image grey-border">
+            <%= link_to image_tag(image.preview.url, :size => "81x81"), image_url(image) %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 
-  <div class="span2 right-panel centered">
-    <h4>Related Images:</h4>
+  <div class="span2 right-panel">
     <div>
-      <% @related_images_by_tag.each do |image| %>
-        <div class="image grey-border">
-          <%= link_to image_tag(image.preview.url, :size => "81x81"), image_url(image) %>
-        </div>
-      <% end %>
+      <h4>Image Info:</h4>
+      <%= "Submitted #{time_ago_in_words(@image.created_at).gsub("about", "")} ago" %>
+      <br>
+      <%= "Score: #{@image.votes}" %>
     </div>
   </div>
+
 </div>

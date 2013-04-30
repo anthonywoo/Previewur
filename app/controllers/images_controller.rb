@@ -1,5 +1,5 @@
 class ImagesController < ApplicationController
-
+  before_filter :require_login, :only => [:create]
   def index
     @images = Image.all
   end

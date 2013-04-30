@@ -1,12 +1,12 @@
 VideoPreviewer::Application.routes.draw do
   root :to => "images#index"
-
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions"}
   resources :images, :except => ["show"]
   match "/images/:slug" => "images#show"
   #resources :images, :except => ["show"]
   resources :comments
   resources :votings, :only => ["create"]
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

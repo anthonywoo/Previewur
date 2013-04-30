@@ -1,9 +1,11 @@
-<%= form_for @comment, remote: true do |f| %>
-  <div>
-    <%= f.text_field :body, :placeholder => "Comment", :id => "comment_submit" %>
-    <%= f.hidden_field :image_id, :value => @image.id %>
-    <%= f.submit "Submit", :class=> "btn btn-primary" %>
-  </div>
+<% if user_signed_in? %>
+  <%= form_for @comment, remote: true do |f| %>
+    <div>
+      <%= f.text_field :body, :placeholder => "Comment", :id => "comment_submit" %>
+      <%= f.hidden_field :image_id, :value => @image.id %>
+      <%= f.submit "Submit", :class=> "btn btn-primary" %>
+    </div>
+  <% end %>
 <% end %>
 
 <% @image.comments.each do |comment| %>
