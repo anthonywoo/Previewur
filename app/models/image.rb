@@ -53,8 +53,6 @@ class Image < ActiveRecord::Base
     self.delay.generate_gif_and_preview
   end
 
-  private
-
   def update_file_name_attributes
     self.anim_gif_file_name = "animated.gif"
     self.preview_file_name = "preview.gif"

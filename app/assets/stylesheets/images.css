@@ -43,14 +43,14 @@ div.left-panel {
 
 .image-display {
   margin-top: 10px;
-  text-align:center
+  text-align:center;
 }
 
 input#comment_submit {
   margin-top: 10px;
   margin-left: 10px;
   margin-right: 7px;
-  width: 570px;
+  width: 500px;
 }
 
 .comment-display {
@@ -73,8 +73,10 @@ input#comment_submit {
 }
 
 .tag-area {
-  margin-left: 10px;
+  margin-top: 10px;
+  margin-left: 55px;
   margin-right: 7px;
+  margin-bottom:10px;
 }
 
 .image-input {
@@ -94,8 +96,10 @@ a.vote:hover {
 }
 
 #outer-vote-container {
-  display: inline-block;
-  vertical-align: middle;
+  float: left;
+  margin-left: 20px;
+  margin-top: 23px;
+  /*vertical-align: middle;*/
 }
 
 #vote-value{
@@ -105,3 +109,14 @@ a.vote:hover {
   width: 24px;
 }
 
+.image-title{
+  margin-left: 30px;
+  padding-bottom: 10px;
+  float:left;
+  width: 90%;
+  
+}
+
+.vote-display{
+  margin: auto;   
+}
