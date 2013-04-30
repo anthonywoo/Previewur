@@ -1,16 +1,16 @@
-<div id="comment-area">
-  <%= form_for @comment, remote: true do |f| %>
+<%= form_for @comment, remote: true do |f| %>
+  <div>
     <%= f.text_field :body, :placeholder => "Comment", :id => "comment_submit" %>
     <%= f.hidden_field :image_id, :value => @image.id %>
     <%= f.submit "Submit", :class=> "btn btn-primary" %>
-  <% end %>
+  </div>
+<% end %>
 
-  <% @image.comments.each do |comment| %>
-    <div class="comment-display">
-      <%= comment.body %>
-      <div class="time-display">
-        <%= "#{time_ago_in_words(comment.created_at).gsub("about", "")} ago" %>
-      </div>
+<% @image.comments.each do |comment| %>
+  <div class="comment-display">
+    <%= comment.body %>
+    <div class="time-display">
+      <%= "#{time_ago_in_words(comment.created_at).gsub("about", "")} ago" %>
     </div>
-  <% end %>
-</div>
+  </div>
+<% end %>

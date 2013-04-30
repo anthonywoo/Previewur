@@ -7,7 +7,9 @@
       <%#= image_tag @image.anim_gif.url %>
     </div>
     <%= render :partial => "tags" %>
-    <%= render :partial => "comments/form" %>
+    <div id="comment-area">
+      <%= render :partial => "comments/form" %>
+    </div>
   </div>
 
   <div class="span2 right-panel centered">

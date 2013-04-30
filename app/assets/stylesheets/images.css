@@ -85,3 +85,23 @@ input#comment_submit {
   margin-left:auto;
   margin-right:auto;
 }
+
+.field_with_errors { display: inline; }
+
+a.vote:hover { 
+  text-decoration: none; 
+  color: #3a87ad;
+}
+
+#outer-vote-container {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#vote-value{
+  font-size:120%;
+  padding-top: 13px;
+  text-align: center;
+  width: 24px;
+}
+

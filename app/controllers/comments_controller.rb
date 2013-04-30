@@ -4,10 +4,11 @@ class CommentsController < ApplicationController
     @comment = Comment.new(params[:comment])
     respond_to do |format|
       if @comment.save
-        @comment = Comment.new
         @image = Image.includes(:comments).find_by_id(params[:comment][:image_id])
+        @comment = Comment.new
         format.js
       else
+        @image = Image.includes(:comments).find_by_id(params[:comment][:image_id])
         format.js
       end
     end

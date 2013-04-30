@@ -1,10 +1,15 @@
-<button class="vote uparrow" id="upvote">
-  UP
-</button>
-<%= @image.votes %>
-<button class="vote downarrow" id="downvote">
-  Down
-</button>
+<div id="outer-vote-container">
+  <a class='vote' id="upvote">
+    <i class="icon-caret-up icon-3x"></i>
+  </a>
+  <div id="vote-value">
+    <%= @image.votes %>
+  </div>
+  <a class='vote' id="downvote">
+    <i class="icon-caret-down icon-3x"></i>
+  </a>
+</div>
+
 
 <script>
 $(".vote").on("click", function() {

@@ -6,7 +6,6 @@ class ImagesController < ApplicationController
 
   def new
     @image = Image.new
-    #@comment = Comment.new
   end
 
   def show
