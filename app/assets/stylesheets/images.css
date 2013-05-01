@@ -2,12 +2,81 @@ div.left-panel {
 
   background-color: #32373c;
   margin-right: 7px;
+  position:relative;
   padding-left: 2px;
   -moz-border-radius: 5px;
   border-radius: 5px;
   /*border-left: 5px solid #32373c;*/
   border: 5px solid #32373c;
   border-bottom: 20px solid #32373c;
+}
+
+div.image-search {
+  background-color: #272b30;
+  margin-top: 10px;
+  margin-right: 4px;
+  margin-left: 4px;
+  margin-bottom: 7px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  border: 5px solid #272b30;
+  font-weight:bold;
+}
+
+div.search-option:hover {
+  font-weight:bold;
+}
+
+div.time-search-option:hover {
+  font-weight:bold;
+}
+
+.search-filter {
+  width: 120px;
+  cursor: pointer;
+  color: #3a87ad;
+}
+
+.search-time {
+  width: 120px;
+  cursor: pointer;
+  color: #3a87ad;
+}
+
+.search-options{
+  background-color: #D8D8D8;
+  position: absolute;
+  padding-left: 3px;
+  top: 39px;
+  left: 33px;
+  width: 118px;
+  z-index: 2px;
+  border: 2px solid #272b30;
+  color: black;
+  font-size: 85%;
+  cursor: pointer;
+}
+
+.black {
+  color: black;
+}
+
+.time-search-options{
+  background-color: #D8D8D8;
+  position: absolute;
+  padding-left: 3px;
+  top: 39px;
+  left: 200px;
+  width: 118px;
+  z-index: 2px;
+  border: 2px solid #272b30;
+  color: black;
+  font-size: 85%;
+  cursor: pointer;
+}
+
+.hidden{
+  display: none;
 }
 
 .row-fluid .right-panel{
@@ -22,17 +91,14 @@ div.left-panel {
   margin-bottom: 30px;
 }
 
-.yellow-border {
+.image:hover {
   border:2px solid #DAA520;
-}
-
-.grey-border {
-  border:2px solid #464b4f
 }
 
 .image {
   margin: 3px;
   float: left;
+  border:2px solid #464b4f
 }
 /*.content-panel {
   background-color: #272b30;
@@ -122,4 +188,14 @@ a.vote:hover {
 
 .vote-display{
   margin: auto;   
+}
+
+div#sign_in {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+div#register_modal{
+  padding-left: 20px;
+  padding-right: 20px;
 }

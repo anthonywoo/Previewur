@@ -1,15 +1,28 @@
 <div class="row-fluid">
   <div class="span9 left-panel">
-    <% @images.each do |image| %>
-      <div class="image grey-border" >
-        <% if image.preview_file_name %>
-        <%= link_to image_tag(image.preview.url, :size => "162x162"), image_url(image) %>
-        <% end %> 
-      </div>
-    <% end %>
+    <div class="image-search">
+      The <span class="search-filter" data-type="votes">Highest Scoring</span> GIFs of 
+      <span class="search-time" data-type="1000">All Time</span>
+    </div>
+    <div class="search-options hidden">
+      <div class="search-option" id="votes" data-type="votes">Highest Scoring</div>
+      <div class="search-option" id="comment_count" data-type="comment_count">Most Commented</div>
+      <div class="search-option" id="created_at" data-type="created_at">Most Recent</div>
+    </div>
+
+    <div class="time-search-options hidden">
+      <div class="time-search-option" data-type="1000"><a href="#1000" class="black">All Time</a></div>
+      <div class="time-search-option" data-type="7"><a href="#7" class="black">This Week</a></div>
+      <div class="time-search-option" data-type="1"><a href="#1" class="black">Today</a></div>
+    </div>
+
+    <div class="image-grid">
+      <%= render :partial => "image_grid" %>
+    </div>
   </div>
 
   <div class="span2">
+    <input type="text">
     <a href="#create_image" role="button" class="btn" data-toggle="modal" data-target="#create_image" id="launchmodal">Create New GIF</a>
 
     <div id="create_image" class="modal hide" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -22,3 +35,56 @@
   </div>
 
 </div>
+
+<script>
+  $(function(){
+    $(".search-filter").on("click", function(event){
+      event.stopPropagation();
+      $('.time-search-options').addClass("hidden");
+      $(".search-options").toggleClass("hidden");
+    });
+
+    $("body").on("click", function(){
+      $('.time-search-options').addClass("hidden");
+      $('.search-options').addClass("hidden");
+    });
+
+    $(".search-time").on("click", function(event){
+      event.stopPropagation();
+      $('.search-options').addClass("hidden");
+      $(".time-search-options").toggleClass("hidden");
+    });
+
+    $(".search-option").on("click", function(event){
+      $(".search-filter").attr("data-type", $(this).attr("data-type"));
+      event.stopPropagation();
+      var that = this;
+      var dataQuery = {search: {cat: $(".search-filter").attr("data-type"), time: $(".search-time").attr("data-type")}};
+      $.ajax({
+        url: "/images.js",
+        data: dataQuery,
+        success: function(){
+          $(".search-filter").html("");
+          $(".search-filter").html($(that).html());
+          $(".search-options").addClass("hidden");
+        }
+      });
+    })
+
+    $(".time-search-option").on("click", function(event){
+      $(".search-time").attr("data-type", $(this).attr("data-type"));
+      event.stopPropagation();
+      var that = this;
+      var dataQuery = {search: {cat: $(".search-filter").attr("data-type"), time: $(".search-time").attr("data-type")}};
+      $.ajax({
+        url: "/images.js",
+        data: dataQuery, 
+        success: function(){
+          $(".search-time").html("");
+          $(".search-time").html($(that).text());
+          $(".time-search-options").addClass("hidden");
+        }
+      });
+    });
+  });
+</script>

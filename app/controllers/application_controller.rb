@@ -6,10 +6,6 @@ class ApplicationController < ActionController::Base
     @image = Image.new
   end
 
-  # def current_user
-  #   User.find(1)
-  # end
-
   def require_login
     redirect_to new_user_session_url unless user_signed_in? #TODO
   end

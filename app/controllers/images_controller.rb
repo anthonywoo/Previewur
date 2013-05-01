@@ -1,7 +1,12 @@
 class ImagesController < ApplicationController
-  before_filter :require_login, :only => [:create]
+  before_filter :authenticate_user!, :only => [:create]
+  
   def index
-    @images = Image.all
+    @images = params[:search] ? Image.fetch_images(params[:search]) : Image.all
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new
@@ -17,14 +22,23 @@ class ImagesController < ApplicationController
   def create
     @image = Image.new(params[:image])
     @image.set_tags = params[:tag_names] if params[:tag_names]
-    respond_to do |format|
-      if @image.save
-        format.html { redirect_to images_url, :notice => 'Article was successfully created.' }
-      else
+
+    if @image.save
+      respond_to do |format|
+        format.html { redirect_to images_url, :notice => 'Submission complete. We will email you when the image is ready.'}
+      end
+    else
+      respond_to do |format|
+        format.html {flash[:error] = "Your uploaded source had an invalid content_type."; redirect_to images_url}
         format.js
       end
     end
   end
 
+  def random
+    offset = rand(Image.count)
+    random_image = Image.first(:offset => offset)
+    redirect_to image_url(random_image)
+  end
 
 end

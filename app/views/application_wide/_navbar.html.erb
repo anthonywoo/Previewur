@@ -2,7 +2,7 @@
   <div class="container">
     <ul class="nav">
       <li><%= link_to "TEST", root_url, :class=> "brand" %></li>
-      <li><a href="#">Random</a></li>
+      <li><%= link_to "Random", random_images_url %></li>
     </ul>
     <ul class="nav pull-right">
       <% if user_signed_in? %>

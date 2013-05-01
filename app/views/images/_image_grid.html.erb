@@ -1,0 +1,7 @@
+<% @images.each do |image| %>
+  <div class="image" >
+    <% if image.preview_file_name %>
+    <%= link_to image_tag(image.preview.url, :size => "162x162"), image_url(image) %>
+    <% end %> 
+  </div>
+<% end %>

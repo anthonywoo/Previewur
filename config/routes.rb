@@ -1,7 +1,9 @@
 VideoPreviewer::Application.routes.draw do
   root :to => "images#index"
   devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions"}
-  resources :images, :except => ["show"]
+  resources :images, :except => ["show"] do
+    get "random", :on => :collection
+  end
   match "/images/:slug" => "images#show"
   #resources :images, :except => ["show"]
   resources :comments

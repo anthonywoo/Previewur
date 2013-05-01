@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
-
+  before_filter :authenticate_user!, :only => [:create]
+  
   def create
     @comment = Comment.new(params[:comment])
     respond_to do |format|

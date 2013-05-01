@@ -23,12 +23,18 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
+
+gem 'thin'
 gem 'therubyracer'
 gem 'daemons'
 gem 'delayed_job_active_record'
 gem 'jquery-rails'
-gem 'pry'
-gem 'debugger'
+
+group :development do
+  gem 'pry'
+  gem 'debugger'
+  gem "letter_opener"
+end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

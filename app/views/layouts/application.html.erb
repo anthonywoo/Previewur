@@ -10,6 +10,21 @@
   <div class="navbar" id="top_navbar">
     <%= render :partial => "application_wide/navbar" %>
   </div>
+
+  <% flash.each do |name, msg| %>
+    <% if msg.is_a?(String) %>
+      <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+        <a class="close" data-dismiss="alert">&#215;</a>
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      </div>
+    <% end %>
+    <script>
+      $(function(){
+        $(".alert").delay(3000).fadeOut("slow");
+      })
+    </script>
+  <% end %>
+
   <div class="container">
     <%= yield %>
   </div>
