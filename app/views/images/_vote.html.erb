@@ -1,4 +1,4 @@
-<% if user_signed_in? %>
+
   <div id="outer-vote-container">
     <a class='vote' id="upvote">
       <i class="icon-caret-up icon-3x"></i>
@@ -10,7 +10,7 @@
       <i class="icon-caret-down icon-3x"></i>
     </a>
   </div>
-<% end %>
+
 <script>
 $(".vote").on("click", function() {
   $.post("/votings", { vote_type: $(this).attr("id"), image_id: $("#comment_image_id").val() })

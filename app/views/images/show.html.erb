@@ -47,3 +47,14 @@
 
 </div>
 
+
+<% unless user_signed_in? %>
+  <script>
+    $(function(){
+      $("#comment-area").hide();
+      $(".vote-display").hide();
+    })
+  </script>
+<% end %>
+
+

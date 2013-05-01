@@ -1,4 +1,5 @@
-$('#sign_in').modal('hide')
+$('#sign_in').modal('hide');
 
 $('#top_navbar').html('<%= escape_javascript(render('application_wide/navbar')) %>');
-$('#comment-area').html('<%= escape_javascript(render('comments/new_form')) %>')
+$("#comment-area").show();
+$(".vote-display").show();
