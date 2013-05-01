@@ -1,0 +1,23 @@
+<div id="register_modal" class="modal hide" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h2>Sign up</h2>
+  </div>
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :remote=>true) do |f| %>
+    <div class="errors">
+      <%#= devise_error_messages! %>
+    </div>
+    <div><%= f.label :email, "Email:" %>
+    <%= f.email_field :email, :autofocus => true %></div>
+
+    <div><%= f.label :password, "Password:" %>
+    <%= f.password_field :password %></div>
+
+    <div><%= f.label :password_confirmation, "Password Confirmation:" %>
+    <%= f.password_field :password_confirmation %></div>
+
+    <div><%= f.submit "Sign up", :class=> "btn btn-primary" %></div>
+  <% end %>
+
+  <%= render "devise/shared/links" %>
+<div>

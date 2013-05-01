@@ -18,16 +18,16 @@
 $(function(){
   $("#launchmodal").on("click", function(){
     $("#messages").html("");
-  })
+  });
   $("#comment_submit").on("click", function(){
     $("#comment_submit").attr("placeholder", "");
-  })
+  });
   $(".tag-input").on("focus", function(){
     $(".tag-input").attr("placeholder", "");
-  })
+  });
   $(".tag-input").on("blur", function(){
     $(".tag-input").attr("placeholder", "Tags");
-  })
+  });
 })
 
 $(function(){
@@ -51,7 +51,7 @@ $(function(){
   $(".image").on("mouseout", function(){
     $(this).removeClass("yellow-border").addClass("grey-border")
   });
-  $("#sign_in_modal").on("click", function(){
+  $("#sign_in_modal_link").on("click", function(){
     $(".sign_in_errors").html("")
   });
   // $(".vote").on("click", function() {

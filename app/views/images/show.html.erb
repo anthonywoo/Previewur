@@ -15,7 +15,12 @@
     <%= render :partial => "tags" %>
 
     <div id="comment-area">
-      <%= render :partial => "comments/form" %>
+      <%= render :partial => "comments/new_form" %>
+    </div>
+
+
+    <div id="comment-area2">
+      <%= render :partial => "comments/index" %>
     </div>
   </div>
   <% unless @related_images_by_tag.empty? %>
@@ -41,3 +46,4 @@
   </div>
 
 </div>
+

@@ -9,8 +9,8 @@
         <li><%= link_to "Sign out", destroy_user_session_url, :method => :delete %></li>
       <% end %>
       <% unless user_signed_in? %>
-        <li><a href="#sign_in" data-toggle="modal" data-target="#sign_in" id="sign_in_modal">Sign In</a></li>
-        <li><%= link_to "Register", new_user_registration_url %></li>
+        <li><a href="#sign_in" data-toggle="modal" data-target="#sign_in" id="sign_in_modal_link">Sign In</a></li>
+        <li><a href="#register" data-toggle="modal" data-target="#register_modal" id="register_modal_link">Register</a></li>
       <% end %>
     </ul>
   </div>

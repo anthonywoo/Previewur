@@ -1,0 +1,3 @@
+<% resource.errors.full_messages.each do |message| %>
+  $(".errors").append("<li><%= escape_javascript(message) %></li>");
+<% end %>

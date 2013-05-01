@@ -7,7 +7,7 @@ class SessionsController < Devise::SessionsController
       respond_to do |format|
         format.html {redirect_to new_user_session_url}
         format.js 
-     end
+      end
     end
   end
 

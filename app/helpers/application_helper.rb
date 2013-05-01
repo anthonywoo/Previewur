@@ -10,4 +10,8 @@ module ApplicationHelper
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
   end
+
+  def devise_error_messages1!
+    resource.errors.full_messages.map { |msg| content_tag(:div, msg) }.join
+  end
 end

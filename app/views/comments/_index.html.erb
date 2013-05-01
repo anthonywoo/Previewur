@@ -1,0 +1,8 @@
+<% @image.comments.each do |comment| %>
+  <div class="comment-display">
+    <%= comment.body %>
+    <div class="time-display">
+      <%= "#{time_ago_in_words(comment.created_at).gsub("about", "")} ago" %>
+    </div>
+  </div>
+<% end %>
