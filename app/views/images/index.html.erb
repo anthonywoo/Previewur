@@ -11,9 +11,9 @@
     </div>
 
     <div class="time-search-options hidden">
-      <div class="time-search-option" data-type="1000"><a href="#1000" class="black">All Time</a></div>
-      <div class="time-search-option" data-type="7"><a href="#7" class="black">This Week</a></div>
-      <div class="time-search-option" data-type="1"><a href="#1" class="black">Today</a></div>
+      <div class="time-search-option" data-type="1000">All Time</div>
+      <div class="time-search-option" data-type="7">This Week</div>
+      <div class="time-search-option" data-type="1">Today</div>
     </div>
 
     <div class="image-grid">
@@ -60,29 +60,57 @@
       event.stopPropagation();
       var that = this;
       var dataQuery = {search: {cat: $(".search-filter").attr("data-type"), time: $(".search-time").attr("data-type")}};
+      var url = "#" + dataQuery.search.cat + dataQuery.search.time
+      history.pushState(dataQuery, "", url)
       $.ajax({
         url: "/images.js",
         data: dataQuery,
         success: function(){
-          $(".search-filter").html("");
-          $(".search-filter").html($(that).html());
-          $(".search-options").addClass("hidden");
+          update_search_title(dataQuery);
         }
       });
     })
+
+    $(window).bind('popstate', function(event) {
+      var dataQuery = event.originalEvent.state;
+      var url = "#" + dataQuery.search.cat + dataQuery.search.time
+      history.pushState(dataQuery, "", url)
+      if (dataQuery){
+        $.ajax({
+          url: "/images.js",
+          data: dataQuery, 
+          success: function(){
+            update_search_title(dataQuery);
+          }
+        })
+      }
+    })
+
+    var update_search_title = function(dataQuery){
+      var cat_text = $("div").find("[data-type='" + dataQuery.search.cat + "']").filter("div").text();
+      var time_text = $("div").find("[data-type='" + dataQuery.search.time + "']").filter("div").text();
+      $(".search-time").html("");
+      $(".search-time").html(time_text);
+      $(".search-filter").html("");
+      $(".search-filter").html(cat_text);
+      $(".time-search-options").addClass("hidden");
+      $(".search-options").addClass("hidden");
+      $(".search-time").attr("data-type", dataQuery.search.time)
+      $(".search-filter").attr("data-type", dataQuery.search.cat)
+    };
 
     $(".time-search-option").on("click", function(event){
       $(".search-time").attr("data-type", $(this).attr("data-type"));
       event.stopPropagation();
       var that = this;
       var dataQuery = {search: {cat: $(".search-filter").attr("data-type"), time: $(".search-time").attr("data-type")}};
+      var url = "#" + dataQuery.search.cat + dataQuery.search.time
+      history.pushState(dataQuery, "", url)
       $.ajax({
         url: "/images.js",
         data: dataQuery, 
         success: function(){
-          $(".search-time").html("");
-          $(".search-time").html($(that).text());
-          $(".time-search-options").addClass("hidden");
+          update_search_title(dataQuery)
         }
       });
     });
