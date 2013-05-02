@@ -41,7 +41,9 @@
       <h4>Image Info:</h4>
       <%= "Submitted #{time_ago_in_words(@image.created_at).gsub("about", "")} ago" %>
       <br>
-      <%= "Score: #{@image.votes}" %>
+      <span id="vote-value">Score: 
+        <%= "#{@image.votes}" %>
+      </span>
     </div>
   </div>
 

@@ -5,6 +5,7 @@ class Image < ActiveRecord::Base
   has_many :comments, :order => 'created_at DESC'
   has_many :image_tags
   has_many :tags, :through => :image_tags
+  
   make_voteable
 
   has_attached_file :source, :url  => "/system/images/:id/:filename",
@@ -18,7 +19,7 @@ class Image < ActiveRecord::Base
 
   scope :days_created_ago, lambda{|day| where("created_at > ?", day.days.ago)}
 
-  validates :title, :slug, :presence => true
+  validates :title, :slug, :user, :presence => true
   
   validates_attachment :source, :presence => true,
                                 :size => { :in => 0..5.megabytes },
@@ -82,6 +83,8 @@ class Image < ActiveRecord::Base
     target_files_to_delete = "#{source_dir}/out*.*png"
     system("rm #{target_files_to_delete}")
     self.update_file_name_attributes
+    sleep 2
+    ImageMailer.image_ready_email(self).deliver
   end
 
   def generate_gif_and_preview

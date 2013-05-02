@@ -16,13 +16,13 @@ class ImagesController < ApplicationController
   def show
     @image = Image.find_by_slug(params[:slug])
     @comment = Comment.new
-    @related_images_by_tag = @image.fetch_related_images(10)
+    @related_images_by_tag = @image.fetch_related_images(6)
   end
 
   def create
     @image = Image.new(params[:image])
     @image.set_tags = params[:tag_names] if params[:tag_names]
-
+    @image.user = current_user
     if @image.save
       respond_to do |format|
         format.html { redirect_to images_url, :notice => 'Submission complete. We will email you when the image is ready.'}
