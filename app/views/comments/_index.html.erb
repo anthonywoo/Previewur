@@ -1,8 +1,23 @@
 <% @image.comments.each do |comment| %>
   <div class="comment-display">
+    <div class="comment-vote-area">
+      <a class=<%= check_if_upvoted(comment) %> id="upvote" data-comment-id=<%=comment.id%>>
+        <i class="icon-caret-up icon-2x"></i>
+      </a>
+      <a class=<%= check_if_downvoted(comment) %> id="downvote" data-comment-id=<%=comment.id%>>
+        <i class="icon-caret-down icon-2x"></i>
+      </a>
+    </div>
     <%= comment.body %>
     <div class="time-display">
-      <%= "#{time_ago_in_words(comment.created_at).gsub("about", "")} ago" %>
+      <%= "#{time_ago_in_words(comment.created_at).gsub("about", "")} ago" %> | 
     </div>
   </div>
 <% end %>
+
+<script> //todo MOVE to js file
+  $(".comment-vote").on("click", function(event) {
+    $.post("/comment_votes", { vote_type: $(this).attr("id"), comment_id: $(this).attr("data-comment-id") })
+  })
+</script>
+

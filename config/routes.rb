@@ -8,6 +8,7 @@ VideoPreviewer::Application.routes.draw do
   #resources :images, :except => ["show"]
   resources :comments
   resources :votings, :only => ["create"]
+  resources :comment_votes, :only => ["create"]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

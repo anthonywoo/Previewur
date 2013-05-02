@@ -33,6 +33,7 @@ $(function(){
   })
 
   $(window).bind('popstate', function(event) {
+    // console.log(new Date());
     var dataQuery = event.originalEvent.state;
     if (dataQuery){
       console.log(dataQuery)

@@ -15,6 +15,7 @@ class ImagesController < ApplicationController
 
   def show
     @image = Image.find_by_slug(params[:slug])
+    @comments = @image.comments.includes(:votings)
     @comment = Comment.new
     @related_images_by_tag = @image.fetch_related_images(6)
   end
@@ -39,6 +40,10 @@ class ImagesController < ApplicationController
     offset = rand(Image.count)
     random_image = Image.first(:offset => offset)
     redirect_to image_url(random_image)
+  end
+
+  def current_user
+    @current_user ||= super && User.includes(:votings).find(@current_user.id)
   end
 
 end

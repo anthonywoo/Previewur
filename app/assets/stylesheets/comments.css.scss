@@ -1,3 +1,34 @@
 // Place all the styles related to the comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.upvoted-comment{
+  text-decoration: none; 
+  color: green;
+}
+
+.upvoted-comment:hover{
+  text-decoration: none; 
+  color: green;
+}
+
+.downvoted-comment{
+  text-decoration: none; 
+  color: red;
+}
+
+.downvoted-comment:hover{
+  text-decoration: none; 
+  color: red;
+}
+
+.nonvote-comment{
+  text-decoration: none; 
+  color: white;
+}
+
+.nonvote-comment:hover{
+  text-decoration: none; 
+}
+
+

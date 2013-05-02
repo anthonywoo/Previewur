@@ -3,4 +3,6 @@ class Comment < ActiveRecord::Base
   belongs_to :user
   belongs_to :image
   validates :body, :image_id, :user, :presence => true
+
+  make_voteable
 end

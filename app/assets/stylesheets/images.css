@@ -164,6 +164,11 @@ a.vote:hover {
   color: #3a87ad;
 }
 
+a.comment-vote:hover { 
+  text-decoration: none; 
+  color: #3a87ad;
+}
+
 #outer-vote-container {
   float: left;
   margin-left: 20px;
@@ -198,4 +203,10 @@ div#sign_in {
 div#register_modal{
   padding-left: 20px;
   padding-right: 20px;
+}
+
+.comment-vote-area {
+  float: left;
+  width: 22px;
+  margin-top:-3px;
 }
