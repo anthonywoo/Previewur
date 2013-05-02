@@ -2,8 +2,8 @@ module CommentsHelper
 
   def check_if_upvoted(comment)
     return unless current_user
-    if current_user.voted?(comment)
-      current_user.up_voted?(comment) ? "upvoted-comment" : "nonvote-comment"
+    if current_user.comment_votings.map(&:voteable_id).include?(comment.id)
+      current_user.comment_upvotings.map(&:voteable_id).include?(comment.id) ? "upvoted-comment" : "nonvote-comment"
     else
       "comment-vote"
     end
@@ -11,8 +11,8 @@ module CommentsHelper
 
   def check_if_downvoted(comment)
     return unless current_user
-    if current_user.voted?(comment)
-      current_user.down_voted?(comment) ? "downvoted-comment" : "nonvote-comment"
+    if current_user.comment_votings.map(&:voteable_id).include?(comment.id)
+      current_user.comment_downvotings.map(&:voteable_id).include?(comment.id) ? "downvoted-comment" : "nonvote-comment"
     else
       "comment-vote"
     end
