@@ -1,0 +1,12 @@
+<div>
+  <h4>Image Info:</h4>
+  <%= "Submitted #{time_ago_in_words(@image.created_at).gsub("about", "")} ago" %>
+  <br>
+  <div>
+    Score: <%= "#{@image.votes}" %>
+    <br>
+    <span class="score-display green"><%= pluralize(@image.up_votes, 'upvote') %></span> 
+    <span class="score-display">|</span>
+    <span class="score-display red"><%= pluralize(@image.down_votes, 'downvote') %></span>
+  </div>
+</div>

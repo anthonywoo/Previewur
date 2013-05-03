@@ -210,3 +210,15 @@ div#register_modal{
   width: 22px;
   margin-top:-3px;
 }
+
+.score-display{
+  font-size: 70%;
+}
+
+.green {
+  color: #00AF00;
+}
+
+.red {
+  color: #C80000;
+}

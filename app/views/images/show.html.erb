@@ -4,7 +4,7 @@
       <div class="image-title"><h2><%= @image.title %></h2> </div>
 
       <div class="image-display">
-        <%#= image_tag @image.anim_gif.url %>
+        <%= image_tag @image.anim_gif.url %>
       </div>
     </div>
 
@@ -36,15 +36,8 @@
     </div>
   <% end %>
 
-  <div class="span2 right-panel">
-    <div>
-      <h4>Image Info:</h4>
-      <%= "Submitted #{time_ago_in_words(@image.created_at).gsub("about", "")} ago" %>
-      <br>
-      <span id="vote-value">Score: 
-        <%= "#{@image.votes}" %>
-      </span>
-    </div>
+  <div class="span2 right-panel info-panel">
+    <%= render :partial => "info" %>
   </div>
 
 </div>

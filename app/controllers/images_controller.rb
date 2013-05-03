@@ -43,7 +43,7 @@ class ImagesController < ApplicationController
   end
 
   def current_user
-    @current_user ||= super && User.includes(:votings).find(@current_user.id)
+    @current_user ||= super && User.includes([:comment_upvotings, :comment_downvotings, :comment_votings]).find(@current_user.id)
   end
 
 end
