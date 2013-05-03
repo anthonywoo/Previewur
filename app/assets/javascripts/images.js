@@ -38,7 +38,7 @@ $(function(){
     if (dataQuery){
       console.log(dataQuery)
       var url = "#" + dataQuery.search.cat + dataQuery.search.time
-      history.pushState(dataQuery, "", url)
+      // history.pushState(dataQuery, "", url)
       $.ajax({
         url: "/images.js",
         data: dataQuery, 
