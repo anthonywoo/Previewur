@@ -1,0 +1,7 @@
+
+<% if @images.current_page == @images.total_pages %>
+  $('.pagination').remove();
+<% else %>
+  $('.pagination').replaceWith('<%= j will_paginate(@images) %>');
+<% end %>
+$('.image-grid').append('<%= escape_javascript(render('image_grid')) %>');

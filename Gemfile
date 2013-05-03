@@ -14,6 +14,7 @@ gem 'make_voteable'
 gem "font-awesome-rails"
 gem 'capistrano'
 gem 'bigdecimal'
+gem 'will_paginate', '~> 3.0'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

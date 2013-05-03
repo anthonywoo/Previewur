@@ -2,11 +2,15 @@ class ImagesController < ApplicationController
   before_filter :authenticate_user!, :only => [:create]
   
   def index
-    @images = params[:search] ? Image.fetch_images(params[:search]) : Image.all
+    @images = params[:search] ? Image.per_page(params).fetch_images(params[:search]) : Image.per_page(params)
+    
+    return render :partial => "pagination.js.erb" if params[:pagination]
+
     respond_to do |format|
       format.html
       format.js
     end
+    # @top_comments = Comment.where("created_at > ?", 7.days.ago).all #TODO
   end
 
   def new

@@ -5,3 +5,21 @@
     </div>
   <% end %> 
 <% end %>
+
+<script>
+  $(function(){
+    if ($('.pagination').length) {
+      $(window).scroll(function(){
+        pag_url = $('.pagination .next_page').attr('href')
+        if (pag_url && $(window).scrollTop() > $(document).height() - $(window).height() - 50){
+          $.ajax({
+            url: pag_url,
+            data: {pagination: true},
+            type: 'get',
+            dataType: 'script'
+          })
+        }
+      })
+    }
+  })
+</script>

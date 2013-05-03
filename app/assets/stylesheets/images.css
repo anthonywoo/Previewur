@@ -9,6 +9,7 @@ div.left-panel {
   /*border-left: 5px solid #32373c;*/
   border: 5px solid #32373c;
   border-bottom: 20px solid #32373c;
+  margin-bottom: 20px;
 }
 
 div.image-search {
@@ -221,4 +222,8 @@ div#register_modal{
 
 .red {
   color: #C80000;
+}
+
+.pagination {
+  float: left;
 }

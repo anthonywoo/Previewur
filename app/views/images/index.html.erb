@@ -22,7 +22,7 @@
   </div>
 
   <div class="span2">
-    <input type="text">
+    <input type="text" class="test">
     <a href="#create_image" role="button" class="btn" data-toggle="modal" data-target="#create_image" id="launchmodal">Create New GIF</a>
 
     <div id="create_image" class="modal hide" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -33,5 +33,7 @@
       <%= render :partial => "images/form" %>
     </div>
   </div>
-
+  <div class="pagination span9">
+    <%= will_paginate @images %>
+  </div>
 </div>

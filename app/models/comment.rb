@@ -5,4 +5,6 @@ class Comment < ActiveRecord::Base
   validates :body, :image_id, :user, :presence => true
 
   make_voteable
+
+  
 end

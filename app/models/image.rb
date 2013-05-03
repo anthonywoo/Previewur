@@ -5,7 +5,7 @@ class Image < ActiveRecord::Base
   has_many :comments, :order => 'created_at DESC'
   has_many :image_tags
   has_many :tags, :through => :image_tags
-  
+
   make_voteable
 
   has_attached_file :source, :url  => "/system/images/:id/:filename",
@@ -32,6 +32,10 @@ class Image < ActiveRecord::Base
     cat = query[:cat].to_sym
     time = query[:time].to_i
     Image.includes(:comments).days_created_ago(time).all.sort_by(&cat).reverse
+  end
+
+  def self.per_page(params)
+    self.paginate(:page => params[:page], :per_page => 12)
   end
 
   def comment_count
