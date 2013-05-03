@@ -2,24 +2,39 @@
   <% if image.preview_file_name %>
     <div class="image" >
       <%= link_to image_tag(image.preview.url, :size => "162x162"), image_url(image) %>
+      <div class="thumbnail-title-info hidden">
+        <%= image.title %>
+      </div>
     </div>
   <% end %> 
 <% end %>
 
 <script>
   $(function(){
+    console.log("BLAH")
     if ($('.pagination').length) {
       $(window).scroll(function(){
-        pag_url = $('.pagination .next_page').attr('href')
+        pag_url = $('.pagination .next_page').attr('href');
         if (pag_url && $(window).scrollTop() > $(document).height() - $(window).height() - 50){
           $.ajax({
             url: pag_url,
             data: {pagination: true},
             type: 'get',
             dataType: 'script'
-          })
-        }
+          });
+        };
       })
     }
+  })
+
+  $(function(){
+    $(".image").hover(function(){
+      console.log(this)
+      $(this).children("div").removeClass("hidden");
+    });
+
+    $(".image").mouseout(function(){
+      $(this).children("div").addClass("hidden");
+    })
   })
 </script>

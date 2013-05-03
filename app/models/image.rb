@@ -35,7 +35,7 @@ class Image < ActiveRecord::Base
   end
 
   def self.per_page(params)
-    self.paginate(:page => params[:page], :per_page => 12)
+    self.paginate(:page => params[:page], :per_page => 16)
   end
 
   def comment_count

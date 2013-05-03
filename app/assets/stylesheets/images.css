@@ -227,3 +227,16 @@ div#register_modal{
 .pagination {
   float: left;
 }
+
+.thumbnail-title-info{
+  z-index: 1px;
+  font-weight:bold;
+  position: absolute;
+  margin-left: -2px;
+  margin-top: -1px;
+  min-width: 163px;
+  text-align: center;
+  background-color: black;
+  border:2px solid gray;
+  opacity: 0.95;
+}
