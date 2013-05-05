@@ -37,9 +37,11 @@
     <div class="comment-title-box">
       Latest Comments
     </div>
-    <div>
-      asdsad
-    </div>
+    <% @latest_comments.each do |comment| %>
+      <div class="latest-comment">
+        <%= link_to comment.body, image_path(comment.image) %>
+      </div>
+    <% end %>
   </div>
 
   <div class="pagination span9">

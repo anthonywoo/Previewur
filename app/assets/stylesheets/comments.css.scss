@@ -36,7 +36,6 @@
 }
 
 .comment-title-box{
-  background-color: #272b30;
   padding-left: 2px;
   color: black;
   font-weight: bold;
@@ -45,6 +44,16 @@
   border-radius: 5px;
   padding-left: 5px;
   font-size: 16px;
+  margin-bottom: 5px;
+}
 
+.latest-comment {
+  background-color: #272b30;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding-top: 2px;
+  padding-left: 5px;
+  margin-bottom: 4px;
+  text-decoration: none; 
 }
 

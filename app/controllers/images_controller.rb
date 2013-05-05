@@ -3,14 +3,14 @@ class ImagesController < ApplicationController
   
   def index
     @images = params[:search] ? Image.per_page(params).fetch_images(params[:search]) : Image.per_page(params)
-    
+    @latest_comments = Comment.includes(:image).limit(5).order("id DESC")
+
     return render :partial => "pagination.js.erb" if params[:pagination]
 
     respond_to do |format|
       format.html
       format.js
     end
-    # @top_comments = Comment.where("created_at > ?", 7.days.ago).all #TODO
   end
 
   def new
