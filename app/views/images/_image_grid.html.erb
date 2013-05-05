@@ -11,9 +11,13 @@
 
 <script>
   $(function(){
-    console.log("BLAH")
-    if ($('.pagination').length) {
-      $(window).scroll(function(){
+
+    var endlessScroll;
+
+    endlessScroll = function(){
+      if ($('.pagination').length) {
+        console.log('asd')
+        $(window).off("scroll", endlessScroll);
         pag_url = $('.pagination .next_page').attr('href');
         if (pag_url && $(window).scrollTop() > $(document).height() - $(window).height() - 50){
           $.ajax({
@@ -21,15 +25,19 @@
             data: {pagination: true},
             type: 'get',
             dataType: 'script'
+          }).done(function(){
+            $(window).on('scroll', endlessScroll);
           });
-        };
-      })
+        } else {
+          $(window).on('scroll', endlessScroll);
+        }
+      }
     }
-  })
+    $(window).on("scroll", endlessScroll);
+  });
 
   $(function(){
     $(".image").hover(function(){
-      console.log(this)
       $(this).children("div").removeClass("hidden");
     });
 
