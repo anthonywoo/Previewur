@@ -35,12 +35,18 @@ $(function(){
   taginput.bind('keypress', function(event) {
     if (event.keyCode === 13){
       event.preventDefault();
-      var tagSpan = '<span class="label label-info tag-label">'+ $(".tag-input").val() + '</span>'
       var hiddenValue = '<input type="hidden" name="tag_names[]" value="' + $(".tag-input").val() + '">'
-      $("#tags").append(tagSpan).append(hiddenValue)
+
+      var tagSpan = '<span class="label label-info tag-label temp-tag">'+ $(".tag-input").val() + hiddenValue + '</span>'
+      $("#tags").append(tagSpan)
       $(".tag-input").val("")
     }
   });
+
+  $("#tags").on("dblclick", function(event){
+    $(event.target).remove();
+  })
+
 })
 
 $(function(){
