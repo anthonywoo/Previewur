@@ -23,7 +23,9 @@
 
   <div class="span2">
     <!-- <input type="text" class="test"> -->
-    <a href="#create_image" role="button" class="btn" data-toggle="modal" data-target="#create_image" id="launchmodal">Create New GIF</a>
+    <% if current_user %>
+      <a href="#create_image" role="button" class="btn" data-toggle="modal" data-target="#create_image" id="launchmodal">Create New GIF</a>
+    <% end %>
 
     <div id="create_image" class="modal hide" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-header">
@@ -33,7 +35,7 @@
       <%= render :partial => "images/form" %>
     </div>
   </div>
-  <div class="span2 right-panel home-comments">
+  <!-- <div class="span2 right-panel home-comments">
     <div class="comment-title-box">
       Latest Comments
     </div>
@@ -42,7 +44,7 @@
         <%= link_to comment.body, image_path(comment.image) %>
       </div>
     <% end %>
-  </div>
+  </div> -->
 
   <div class="pagination span9">
     <%= will_paginate @images %>

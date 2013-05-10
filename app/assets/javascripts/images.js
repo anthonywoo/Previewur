@@ -71,7 +71,7 @@ $(function(){
     history.pushState(dataQuery, "", url)
     $.ajax({
       url: "/images.js",
-      data: dataQuery, 
+      data: dataQuery,
       success: function(){
         update_search_title(dataQuery)
       }
