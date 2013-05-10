@@ -23,14 +23,14 @@
 
   <div class="span2">
     <!-- <input type="text" class="test"> -->
-    <% if current_user %>
-      <a href="#create_image" role="button" class="btn" data-toggle="modal" data-target="#create_image" id="launchmodal">Create New GIF</a>
-    <% end %>
+    
+    <a href="#create_image" role="button" class="btn" data-toggle="modal" data-target="#create_image" id="launchmodal">Create New GIF</a>
 
     <div id="create_image" class="modal hide" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h3>Create New GIF</h3>
+        <h5>Note: You must be logged in to create GIF</h5>
       </div>
       <%= render :partial => "images/form" %>
     </div>
